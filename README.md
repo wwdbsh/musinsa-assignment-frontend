@@ -1,46 +1,71 @@
-# Getting Started with Create React App
+# Musinsa Assignment - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. 프로젝트 개요 및 목적
 
-## Available Scripts
+이 프론트엔드 프로젝트는 무신사 광고 플랫폼 Backend Engineer 포지션 과제의 사용자 인터페이스(UI)를 구현하기 위해 만들어졌습니다.  
+- **목적:**  
+  - 사용자가 다양한 카테고리의 상품 가격 정보를 직관적이고 현대적인 대시보드를 통해 조회할 수 있도록 합니다.
+  - 관리자는 브랜드와 상품 데이터를 효율적으로 관리(생성, 수정, 삭제)할 수 있는 인터페이스를 제공합니다.
+- **왜 이 프로젝트를 만들었는가?**  
+  - 핵심 기능을 사용자에게 시각적으로 전달하고, 백엔드에서 제공하는 데이터를 효과적으로 표시하기 위해 프론트엔드를 구축했습니다.
 
-In the project directory, you can run:
+## 2. 백엔드와의 연동
 
-### `yarn start`
+이 프론트엔드 프로젝트는 Java와 Spring Boot를 기반으로 한 백엔드 프로젝트와 긴밀하게 연동되어 있습니다.
+- **API 연동:**  
+  - 백엔드가 제공하는 REST API를 소비하여, 카테고리별 최저 가격, 단일 브랜드 총액, 그리고 선택된 카테고리의 최저/최고 가격 등의 데이터를 가져옵니다.
+- **통합 배포:**  
+  - 프론트엔드 빌드 산출물을 Spring Boot의 정적 리소스 폴더(`src/main/resources/static`)에 복사해, 하나의 애플리케이션으로 동작하도록 구성할 수 있습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 3. 프로젝트 상세 설명
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 기술 스택
+- **프론트엔드:**  
+  - React (with TypeScript)
+  - Tailwind CSS
+  - shadcn/ui (UI 컴포넌트)
+- **통신:**  
+  - Axios를 활용한 REST API 연동
+- **빌드 도구:**  
+  - Yarn
 
-### `yarn test`
+### 주요 기능
+- **대시보드:**  
+  - 카테고리별 최저가격 조회, 단일 브랜드 구매 최저 총액, 그리고 선택된 카테고리의 최저/최고 가격 정보를 모던한 라인 테이블과 카드 레이아웃으로 제공합니다.
+- **관리자 인터페이스:**  
+  - 브랜드와 상품 데이터를 생성, 수정, 삭제하는 CRUD 기능을 제공합니다.
+- **반응형 UI:**  
+  - 데스크탑 환경에 최적화된 디자인으로, Tailwind CSS와 shadcn/ui를 활용해 깔끔하고 현대적인 사용자 경험을 제공합니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 빌드 및 실행 방법
+1. **설치:**  
+프로젝트 루트에서 다음 명령어를 실행합니다.
+```bash
+yarn install
+```
 
-### `yarn build`
+2.	**개발 서버 실행:**
+개발 서버를 시작하려면 아래 명령어를 사용합니다.
+```bash
+yarn start
+```
+- 기본 URL: http://localhost:3000
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **프로덕션 빌드:**
+```bash
+yarn build
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **백엔드와 통합:**
+빌드된 `build` 폴더의 내용을 백엔드(Spring Boot)의 `src/main/resources/static` 폴더에 복사하면, 하나의 애플리케이션으로 배포할 수 있습니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 추가 참고 사항
 
-### `yarn eject`
+- **프록시 설정:**  
+  개발 중에는 `package.json`에 `"proxy": "http://localhost:8080"`을 추가하여, CORS 문제를 우회하고 백엔드 API와 원활하게 통신할 수 있습니다.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **UI 디자인:**  
+  이 프로젝트는 Tailwind CSS와 shadcn/ui를 활용해 최신 모던 테이블과 카드 레이아웃을 적용하였습니다. 데스크탑 환경에 최적화된 반응형 디자인으로, 깔끔하고 직관적인 사용자 인터페이스를 제공합니다.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **확장성:**  
+  추후 기능 확장을 위해 상태 관리 라이브러리(예: Redux 또는 Context API)를 도입할 수 있으며, UI 컴포넌트의 재사용성을 고려해 모듈화된 구조로 설계하였습니다.
